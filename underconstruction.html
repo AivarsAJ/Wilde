@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WILDE Logistics - Būvniecības darbi</title>
+    <link rel="icon" type="image/jpeg" href="wildelogo.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background: #e70314;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 84px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo img {
+            height: 100%;
+            width: auto;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            transition: color 0.3s;
+            text-transform: uppercase;
+        }
+
+        nav a:hover {
+            color: #0066cc;
+        }
+
+        .lang-selector {
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-selector a {
+            text-decoration: none;
+            color: #ccc;
+            font-size: 24px;
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+
+        .lang-selector a:hover {
+            transform: scale(1.2);
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            background: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            font-size: 24px;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            margin: 5px 0;
+            transition: all 0.3s;
+        }
+
+        /* Mobile Dropdown Menu */
+        .mobile-nav {
+            display: none;
+            width: 100%;
+            background: #e70314;
+            padding: 20px;
+            margin-top: 10px;
+            border-top: 1px solid #333;
+        }
+
+        .mobile-nav.active {
+            display: block;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mobile-nav ul li {
+            margin: 10px 0;
+        }
+
+        .mobile-nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            display: block;
+            padding: 10px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .mobile-lang-selector {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        .mobile-lang-selector a {
+            font-size: 24px;
+            text-decoration: none;
+        }
+
+        /* Under Construction Section */
+        .construction-section {
+            min-height: calc(100vh - 300px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+        }
+
+        .construction-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 60px 40px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .construction-content h1 {
+            font-size: 48px;
+            color: #e70314;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .construction-content p {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .construction-content .marketing-credit {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #e70314;
+            font-size: 16px;
+            color: #999;
+        }
+
+        .construction-content .marketing-credit strong {
+            color: #e70314;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: #fff;
+            color: #333;
+            padding: 60px 20px 20px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 20px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #e70314;
+        }
+
+        .footer-section p {
+            color: #666;
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+
+        .footer-logo {
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .footer-logo img {
+            max-height: 60px;
+            width: auto;
+            filter: invert(1);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .lang-selector {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .construction-content h1 {
+                font-size: 36px;
+            }
+
+            .construction-content p {
+                font-size: 18px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-main">
+            <div class="logo">
+                <img src="logo.png" alt="WILDE Logistics">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Sakums</a></li>
+                    <li><a href="index.html#services">pakalpojumi</a></li>
+                    <li><a href="index.html#cargoson">cargoson</a></li>
+                    <li><a href="index.html#about">par mums</a></li>
+                    <li><a href="index.html#contact">kontakti</a></li>
+                </ul>
+            </nav>
+            <div class="lang-selector">
+                <a href="#" title="English">🇬🇧</a>
+                <a href="#" title="Latvian">🇱🇻</a>
+                <a href="#" title="Russian">🇷🇺</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <div class="mobile-nav" id="mobileNav">
+            <ul>
+                <li><a href="index.html">Sakums</a></li>
+                <li><a href="index.html#services">pakalpojumi</a></li>
+                <li><a href="index.html#cargoson">cargoson</a></li>
+                <li><a href="index.html#about">par mums</a></li>
+                <li><a href="index.html#contact">kontakti</a></li>
+            </ul>
+            <div class="mobile-lang-selector">
+                <a href="#" title="English">🇬🇧</a>
+                <a href="#" title="Latvian">🇱🇻</a>
+                <a href="#" title="Russian">🇷🇺</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Under Construction Section -->
+    <section class="construction-section">
+        <div class="construction-content">
+            <h1>LAPA TIEK BŪVĒTA</h1>
+            <p>Atvainojiet, šobrīd mēs strādājam pie mūsu mājaslapas uzlabošanas.</p>
+            <p>Lūdzu, atgriezieties vēlāk vai sazinieties ar mums tieši.</p>
+            <div class="marketing-credit">
+                <p><strong>Lapu Izstrādā A&J marketing group</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>Sazinies</h4>
+                    <p><strong>Tel.:</strong> +371 67 40 39 88</p>
+                    <p><strong>Fakss:</strong> +371 67 40 39 75</p>
+                    <p><strong>E-Pasts:</strong> <a href="mailto:info@wilde.lv">info@wilde.lv</a></p>
+                    <p style="margin-top: 15px;"><strong>Mūsu atrašanās vieta:</strong></p>
+                    <p>K. Ulmaņa gatve 2, Rīga, Latvija, LV-1004</p>
+                    <div class="footer-logo" style="margin-top: 20px;">
+                        <img src="logo.png" alt="WILDE Logo">
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Rekvizīti</h4>
+                    <p><strong>SIA WILDE</strong></p>
+                    <p>Reģ.nr.: 40001016193</p>
+                    <p>PVN reģ.nr.: LV40001016193</p>
+                    <p>Juridiskā adrese: Airītes iela 8, Rīga, LV-1029, Latvija</p>
+                    <p style="margin-top: 15px;"><strong>Banka:</strong> Citadele Banka</p>
+                    <p>SWIFT: PARXLV22</p>
+                    <p>IBAN: LV06PARX0020322880001</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Pakalpojumi</h4>
+                    <ul>
+                        <li><a href="index.html#services">Loģistikas pakalpojumi</a></li>
+                        <li><a href="index.html#tm-section-4">Vietējie kravu pārvadājumi</a></li>
+                        <li><a href="index.html#contact">Kontaktu forma</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 SIA WILDE. Visas tiesības aizsargātas.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileNav = document.getElementById('mobileNav');
+            
+            if (mobileMenuBtn && mobileNav) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileNav.classList.toggle('active');
+                    this.classList.toggle('active');
+                });
+
+                // Close menu when clicking on a link
+                const mobileLinks = mobileNav.querySelectorAll('a');
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        mobileNav.classList.remove('active');
+                        mobileMenuBtn.classList.remove('active');
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+
